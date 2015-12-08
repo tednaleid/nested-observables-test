@@ -16,7 +16,7 @@ class FooServiceSpec extends Specification {
         List<String> itemCodes = ["123", "456"]
 
         when:
-        Observable<List<Map>> result = fooService.findItemsByItemCode(itemCodes)
+        Observable<Map> result = fooService.findItemsByItemCode(itemCodes)
 
         then:
         result.subscribe { Map offer ->
