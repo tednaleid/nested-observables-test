@@ -19,8 +19,8 @@ class FooServiceSpec extends Specification {
         Observable<Map> result = fooService.findItemsByItemCode(itemCodes)
 
         then:
-        result.subscribe { Map offer ->
-            println offer
+        result.toList().subscribe { List<Map> offers ->
+            println offers
         }
     }
 }
