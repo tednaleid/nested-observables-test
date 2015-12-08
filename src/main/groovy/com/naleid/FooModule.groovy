@@ -9,5 +9,6 @@ class FooModule extends AbstractModule {
     protected void configure() {
         bind(FooService).in(SINGLETON)
         bind(FooConfig).in(SINGLETON)
+        bind(FooEndpoint).in(SINGLETON)
     }
 }

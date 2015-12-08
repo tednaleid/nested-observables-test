@@ -1,3 +1,4 @@
+import com.naleid.FooEndpoint
 import com.naleid.FooModule
 import ratpack.rx.RxRatpack
 import ratpack.server.Service
@@ -18,7 +19,8 @@ ratpack {
   }
 
   handlers {
-    get {
+    prefix("api") {
+      all chain(registry.get(FooEndpoint))
     }
   }
 }
