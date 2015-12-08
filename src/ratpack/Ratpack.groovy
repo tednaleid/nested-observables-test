@@ -1,18 +1,24 @@
-import ratpack.groovy.template.MarkupTemplateModule
+import com.naleid.FooModule
+import ratpack.rx.RxRatpack
+import ratpack.server.Service
+import ratpack.server.StartEvent
 
-import static ratpack.groovy.Groovy.groovyMarkupTemplate
 import static ratpack.groovy.Groovy.ratpack
 
 ratpack {
   bindings {
-    module MarkupTemplateModule
+    module FooModule
+
+    bindInstance Service, new Service() {
+      @Override
+      void onStart(StartEvent event) throws Exception {
+        RxRatpack.initialize()
+      }
+    }
   }
 
   handlers {
     get {
-      render groovyMarkupTemplate("index.gtpl", title: "My Ratpack App")
     }
-
-    files { dir "public" }
   }
 }
